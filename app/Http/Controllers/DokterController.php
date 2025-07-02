@@ -15,35 +15,40 @@ class DokterController extends Controller
         ]);
     }
 
-    public function update(Request $request)
-    {
-        $user = $request->user();
+public function update(Request $request)
+{
+    $user = $request->user();
 
-        $validated = $request->validate([
-            'no_hp'         => 'required|string',
-            'gender'        => 'required|in:Laki-laki,Perempuan',
-            'spesialis'     => 'required|string',
-            'no_lisensi'    => 'required|string',
-            'pengalaman'    => 'required|integer|min:0',
-            'alamat_klinik' => 'required|string',
-            'pendidikan'    => 'required|string',
-            'deskripsi'     => 'required|string',
-            'foto'          => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    $validated = $request->validate([
+        'no_hp'         => 'required|string',
+        'gender'        => 'required|in:Laki-laki,Perempuan',
+        'spesialis'     => 'required|string',
+        'no_lisensi'    => 'required|string',
+        'pengalaman'    => 'required|integer|min:0',
+        'alamat_klinik' => 'required|string',
+        'pendidikan'    => 'required|string',
+        'deskripsi'     => 'required|string',
+        'foto'          => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        // Simpan foto baru jika ada
-        if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
-            if ($user->foto) {
-                Storage::disk('public')->delete($user->foto);
-            }
-
-            // Upload foto baru
-            $validated['foto'] = $request->file('foto')->store('dokter_profiles', 'public');
+    // Simpan foto baru jika ada
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama jika ada
+        if ($user->foto) {
+            Storage::disk('public')->delete($user->foto);
         }
 
-        $user->update($validated);
+        // Upload foto baru ke storage/dokter_profiles
+        $path = $request->file('foto')->store('dokter_profiles', 'public');
 
-        return back()->with('status', 'Profil berhasil diperbarui!');
+        // Simpan path ke kolom 'foto' di DB
+        $validated['foto'] = $path;
     }
+
+    // Update data user termasuk path foto baru jika ada
+    $user->update($validated);
+
+    return back()->with('status', 'Profil berhasil diperbarui!');
+}
+
 }

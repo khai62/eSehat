@@ -16,7 +16,7 @@
 
         {{-- Gambar Dokter --}}
         @if($dokter->foto)
-          <img src="{{ asset('storage/dokter_profiles/'. $dokter->foto) }}" alt="{{ $dokter->name }}"
+          <img src="{{ asset('storage/app/public/dokter_profiles/'. $dokter->foto) }}" alt="{{ $dokter->name }}"
                class="w-full h-full " />
         @else
           <div class="w-full h-full bg-teal-100 flex items-center justify-center text-teal-700 text-xl font-semibold">

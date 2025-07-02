@@ -11,11 +11,11 @@
 
     {{-- Profil Pengguna --}}
     <a href="{{ route('profil.pasien') }}" class="flex items-center gap-3 hover:bg-teal-50 px-3 py-2 rounded-xl transition">
-      @if(Auth::user()->foto)
-       <img src="{{ Storage::url(Auth::user()->foto) }}"
+      @if (Auth::user()->foto)
+    <img src="{{ Storage::url(Auth::user()->foto) }}"
          class="w-9 h-9 rounded-full object-cover ring-2 ring-teal-200 shadow-sm"
          alt="Foto Profil">
-      @else
+@endif
         <div class="w-9 h-9 bg-teal-100 rounded-full flex items-center justify-center text-white font-semibold shadow-sm ring-2 ring-teal-200">
           {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
         </div>

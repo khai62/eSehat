@@ -68,7 +68,11 @@
     {{-- Footer --}}
     <div class="mt-10 border-t pt-4">
         <div class="flex items-center gap-3 mb-4">
-            <img src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://via.placeholder.com/40' }}"
+            <img src="{{ Auth::user()->foto
+            ? Storage::url(Auth::user()->foto)        
+          }}"
+     class="w-9 h-9 rounded-full object-cover ring-2 ring-teal-200 shadow-sm"
+     alt="Foto Profil">
                  class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-300" alt="Foto Dokter">
             <div class="sidebar-text">
                 <p class="text-sm font-semibold text-gray-800">Dr. {{ Auth::user()->name }}</p>

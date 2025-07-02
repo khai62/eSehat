@@ -25,7 +25,7 @@
             <div class="flex items-center gap-4">
                 {{-- Foto --}}
                 @if(Auth::user()?->foto)
-                    <img src="{{ asset('storage/' . Auth::user()->foto) }}" class="w-20 h-20 rounded-full object-cover ring-2 ring-teal-300 shadow-sm" alt="Foto Profil">
+                    <img src="{{ Storage::disk('public')->url($user->foto) }}" alt="Foto {{ $user->foto }}" class="w-20 h-20 rounded-full object-cover ring-2 ring-teal-300 shadow-md" />
                 @else
                     <div class="w-20 h-20 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center text-2xl font-semibold shadow-sm">
                         {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}

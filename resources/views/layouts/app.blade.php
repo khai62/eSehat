@@ -5,7 +5,7 @@
   <title>@yield('title', 'eSehat')</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/png" href="img/logo2.png">
+  <link rel="icon" href="{{ asset('img/logo1.png') }}">
 </head>
 <body class="bg-gray-50 text-gray-800">
 

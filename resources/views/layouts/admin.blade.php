@@ -10,7 +10,7 @@
 
     {{-- Google Font (optional) --}}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/logo3.png">
+    <link rel="icon" href="{{ asset('img/logo3.png') }}">
     
 </head>
 <body class="bg-gray-100 text-gray-800">

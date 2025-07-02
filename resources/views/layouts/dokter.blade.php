@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', 'Dashboard Dokter - eSehat')</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/png" href="img/logo2.png">
+  <link rel="icon" href="{{ asset('img/logo2.png') }}">
 </head>
 <body class="bg-gray-100  flex">
 

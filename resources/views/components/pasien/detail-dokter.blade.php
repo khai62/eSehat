@@ -9,7 +9,7 @@
   <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10">
     <div class="w-32 h-32 rounded-full shadow-xl overflow-hidden ring-4 ring-white">
       @if($dokter->foto)
-        <img src="{{ asset('storage/' . $dokter->foto) }}" alt="Foto Dokter" class="w-full h-full object-cover">
+        <img src="{{ asset('storage/dokter_foto/' . $dokter->foto) }}" alt="Foto Dokter" class="w-full h-full object-cover">
       @else
         <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">Foto</div>
       @endif

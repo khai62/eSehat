@@ -9,7 +9,7 @@
         <!-- Header Card -->
         <div class="bg-white border border-blue-100 rounded-3xl shadow-xl p-8 flex items-center gap-6">
             @if($user->foto)
-                <img src="{{ asset('storage/'.$user->foto) }}" class="w-24 h-24 rounded-full object-cover ring-4 ring-teal-300 shadow-md" alt="Foto Profil">
+                <img src="{{ Storage::disk('public')->url($user->foto) }}" alt="Foto {{ $user->foto }}" class="w-24 h-24 rounded-full object-cover ring-4 ring-teal-300 shadow-md" />
             @else
                 <div class="w-24 h-24 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-3xl font-bold ring-4 ring-teal-200">
                     {{ strtoupper(substr($user->name, 0, 1)) }}
@@ -69,7 +69,8 @@
                     <input type="file" name="foto" accept="image/*" class="w-full file:bg-teal-100 file:border-0 file:text-teal-800 file:rounded-lg file:px-4 file:py-2 hover:file:bg-teal-200 transition text-sm">
                     @if($user->foto)
                         <p class="mt-3 text-sm text-gray-600">Foto saat ini:</p>
-                        <img src="{{ asset('storage/'.$user->foto) }}" class="h-24 mt-2 rounded-lg border border-blue-100 shadow-sm" alt="Foto profil">
+            
+                        <img src="{{ Storage::disk('public')->url($user->foto) }}" alt="Foto {{ $user->foto }}"  class="h-24 mt-2 rounded-lg border border-blue-100 shadow-sm" />
                     @endif
                 </div>
 

@@ -77,7 +77,7 @@
                 <input type="file" name="foto" class="mt-1 w-full border-gray-300 rounded-md">
                 @if($user->foto)
                     <p class="mt-3 text-sm text-gray-600">Foto saat ini:</p>
-                    <img src="{{ asset('storage/'.$user->foto) }}" alt="foto profil" class="h-24 rounded-lg mt-2 shadow-md">
+                    <img src="{{ Storage::disk('public')->url($user->foto) }}" alt="Foto {{ $user->name }}" class="h-24 rounded-lg mt-2 shadow-md" />
                 @endif
             </div>
 
